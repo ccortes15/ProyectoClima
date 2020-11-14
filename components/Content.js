@@ -1,44 +1,52 @@
 import { Card, Typography, Switch, Affix, Tag } from 'antd';
 import { useState } from 'react';
-import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
+import NyContent from './citys/Ny';
+import MadridContent from './citys/Madrid';
+import TokioContent from './citys/Tokio';
+import ParisContent from './citys/Paris';
+import BaContent from './citys/BuenosAires';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun, faCloudMoon } from '@fortawesome/free-solid-svg-icons'
 
+const elementDay = <FontAwesomeIcon icon={faSun} />
+const elementNight = <FontAwesomeIcon icon={faCloudMoon} />
 
 const { Text } = Typography;
 
-const contentList = {
-  tab1: <p>content1</p>,
-  tab2: <p>content2</p>,
-  tab3: <p>content2</p>,
-  tab4: <p>content2</p>,
-  tab5: <p>content2</p>,
-};
-
-const Content = ({onChange, isSwitch}) => {
+const Content = ({ onChange, isSwitch }) => {
   const [key, setKey] = useState('tab1');
   const [tab, setTab] = useState(
-    <Text style={{color: isSwitch ? 'black' : 'white'}}>New York</Text>
+    <Text style={{ color: isSwitch ? 'black' : 'white' }}>New York</Text>
   )
+
+  const contentList = {
+    tab1: <NyContent isSwitch={isSwitch}/>,
+    tab2: <MadridContent isSwitch={isSwitch}/>,
+    tab3: <ParisContent isSwitch={isSwitch} />,
+    tab4: <TokioContent isSwitch={isSwitch}/>,
+    tab5: <BaContent isSwitch={isSwitch}/>,
+  };
 
   const tabList = [
     {
       key: 'tab1',
-      tab: <Text style={{color: isSwitch ? 'black' : 'white'}}>New York</Text>
+      tab: <Text style={{ color: isSwitch ? 'black' : 'white' }}>New York</Text>
     },
     {
       key: 'tab2',
-      tab: <Text style={{color: isSwitch ? 'black' : 'white'}}>Madrid</Text>,
+      tab: <Text style={{ color: isSwitch ? 'black' : 'white' }}>Madrid</Text>,
     },
     {
       key: 'tab3',
-      tab: <Text style={{color: isSwitch ? 'black' : 'white'}}>Paris</Text>,
+      tab: <Text style={{ color: isSwitch ? 'black' : 'white' }}>Paris</Text>,
     },
     {
       key: 'tab4',
-      tab: <Text style={{color: isSwitch ? 'black' : 'white'}}>Tokio</Text>,
+      tab: <Text style={{ color: isSwitch ? 'black' : 'white' }}>Tokio</Text>,
     },
     {
       key: 'tab5',
-      tab: <Text style={{color: isSwitch ? 'black' : 'white'}}>Buenos Aires</Text>,
+      tab: <Text style={{ color: isSwitch ? 'black' : 'white' }}>Buenos Aires</Text>,
     },
   ];
 
@@ -50,17 +58,20 @@ const Content = ({onChange, isSwitch}) => {
 
   return (
     <Card
-      style={isSwitch ? {background: '#fff', color: 'black'} : {background: 'black', color: 'white'}}
+      style={isSwitch ? { background: '#fff', color: 'black' } : { background: 'black', color: 'white' }}
       bordered={false}
-      title={<Tag color="#108ee9" style={{fontSize: '20px'}}>
-        {tab}
-      </Tag>}
+      title={
+        <Affix offsetTop={10}>
+          <Tag color="#108ee9" style={{ fontSize: '20px' }}>
+            {tab}
+          </Tag>
+        </Affix>}
       extra={
         <Affix offsetTop={10}>
           <Switch
             onChange={onChange}
-            checkedChildren={<CheckOutlined />}
-            unCheckedChildren={<CloseOutlined />}
+            checkedChildren={elementDay}
+            unCheckedChildren={elementNight}
             defaultChecked
           />
         </Affix>

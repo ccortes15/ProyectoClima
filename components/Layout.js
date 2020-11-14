@@ -1,24 +1,9 @@
-import {
-    DesktopOutlined,
-    PieChartOutlined,
-    FileOutlined,
-} from '@ant-design/icons';
-import {
-    AppstoreOutlined,
-    BarChartOutlined,
-    CloudOutlined,
-    ShopOutlined,
-    TeamOutlined,
-    UserOutlined,
-    UploadOutlined,
-    VideoCameraOutlined,
-  } from '@ant-design/icons';
-import { Layout, Menu, Divider } from 'antd';
+import { Layout, Menu, Divider, Typography } from 'antd';
 import { useState } from 'react';
-import HeaderContent from './Header';
 import CardsContent from './Content';
-const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+const { Content, Footer } = Layout;
+
+const {Text} = Typography;
 
 const LayoutAdmin = () => {
     const [switchValue, setSwitch] = useState(true);
@@ -33,7 +18,9 @@ const LayoutAdmin = () => {
                     <Divider />
                     <CardsContent onChange={changeTheme} isSwitch={switchValue}/>
                 </Content>
-                <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                <Footer style={{ textAlign: 'center', backgroundColor: switchValue ? '#EBF5FF' : '#092D99'}}>
+                    <Text style={{ color: switchValue ? '#092D99' : '#fff'}}>©2020 Created by Adrian Cortés</Text>
+                </Footer>
         </Layout>
     );
 }

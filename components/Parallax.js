@@ -3,10 +3,6 @@ import { useState } from 'react';
 
 const { Title } = Typography;
 
-const backImage = 'https://pixabay.com/get/55e4dd404f51a514f6d1867dda353678153adde55555714e_1920.jpg';
-const londonImage = 'https://pixabay.com/get/51e8dd434a50b108feda8460da29317e103cdee4565472_1920.jpg';
-const madridImage = '/paris-night.jpg';
-const amsterdamImage = '/usa.jpg';
 
 const ParallaxContent = () => {
     const [value, setValue] = useState(true);
