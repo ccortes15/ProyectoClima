@@ -1,34 +1,25 @@
-import { Parallax } from 'react-parallax';
-import Navbar from './Navbar';
+import { Row, Col, Typography, Affix } from 'antd';
 import { useState } from 'react';
 
-const londonImage = '/londres.jpg';
-const madridImage = '/madrid.jpg';
-const amsterdamImage = '/amsterdam.jpg';
+const { Title } = Typography;
 
 const Header = () => {
-    const [bg, setBg] = useState(madridImage);
-
-    const changeImage = (value) => {
-        switch (value) {
-            case 'london':
-                setBg(londonImage);
-                break;
-            case 'madrid':
-                setBg(madridImage);
-                break;
-            case 'amsterdam':
-                setBg(amsterdamImage);
-                break;
-        }
-    }
 
     return (
-        <Parallax bgImage={bg} strength={500}>
-            <div style={{ height: 700 }}>
-                <Navbar changeImage={changeImage} />
-            </div>
-        </Parallax>
+        <Affix offsetTop={10}>
+            <Row style={{margin: 0}}>
+            <Col flex="200px">
+                <Title level={4}>Nueva York</Title>
+            </Col>
+            <Col flex="auto">
+                <Row justify="end">
+                    <Col>
+                        More
+                </Col>
+                </Row>
+            </Col>
+        </Row>
+        </Affix>
     )
 }
 
